@@ -7,6 +7,7 @@ WORKDIR /opt
 RUN wget http://download.oracle.com/glassfish/$GLASSFISH_VERSION/release/$GLASSFISH_FILE
 RUN unzip -o $GLASSFISH_FILE
 RUN mv glassfish3/ glassfish-$GLASSFISH_VERSION/
-EXPOSE 4848 8080 8181
 RUN ln -s /opt/glassfish-$GLASSFISH_VERSION /opt/glassfish
+RUN rm $GLASSFISH_FILE
+EXPOSE 4848 8080 8181
 CMD ["/opt/glassfish/bin/asadmin", "start-domain", "-v"]
